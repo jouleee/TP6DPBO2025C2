@@ -98,11 +98,14 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         JDialog dialog = new JDialog((Frame) SwingUtilities.getWindowAncestor(this), "Game Over", false); // false = non-modal
         dialog.setLayout(new BorderLayout());
 
-        JPanel messagePanel = new JPanel(new GridLayout(2, 1));
+        JPanel messagePanel = new JPanel(new GridLayout(3, 1));
         JLabel gameOverLabel = new JLabel("Game Over!", SwingConstants.CENTER);
+        JLabel restartLabel = new JLabel("R for Restart", SwingConstants.CENTER);
+        restartLabel.setForeground(Color.RED);
         JLabel scoreLabel = new JLabel("Score: " + score, SwingConstants.CENTER);
 
         messagePanel.add(gameOverLabel);
+        messagePanel.add(restartLabel);
         messagePanel.add(scoreLabel);
 
         dialog.add(messagePanel, BorderLayout.CENTER);
