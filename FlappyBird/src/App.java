@@ -1,4 +1,5 @@
-import  javax.swing.*;
+import javax.swing.*;
+
 public class App {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Flappy Bird");
@@ -7,10 +8,18 @@ public class App {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
-        FlappyBird flappyBird = new FlappyBird();
-        frame.add(flappyBird);
-        frame.pack();
-        flappyBird.requestFocus();
+        Startmenu startmenu = new Startmenu();
+        frame.add(startmenu.getMainPanel());
         frame.setVisible(true);
+
+        startmenu.getMulaiButton().addActionListener(e -> {
+            FlappyBird flappyBird = new FlappyBird();
+            frame.remove(startmenu.getMainPanel());
+            frame.add(flappyBird);
+            frame.revalidate();
+            frame.repaint();
+            flappyBird.requestFocus();
+            frame.pack();
+        });
     }
 }
